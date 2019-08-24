@@ -1,0 +1,7 @@
+#
+
+
+
+### IntelliJ Idaea 新建一个类或包的时候，能不能一次把包名写完整，自动创建包？
+https://www.oschina.net/question/1033082_130521?sort=default
+原来在目录上右键选择“Make Directory As” ->"Source Root"，然后就有创建类菜单，能自动创建了
