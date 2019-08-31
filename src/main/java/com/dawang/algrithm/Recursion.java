@@ -1,4 +1,7 @@
 package com.dawang.algrithm;
+
+import java.util.Arrays;
+
 public class Recursion {
 /**
  * https://www.jianshu.com/p/104187c62e15
@@ -90,7 +93,7 @@ public class Recursion {
     }
 
 
-    public static int[] sort(int[] array){
+    public static void sort(int[] array){
         int len = array.length;
         for(int i =0;i<len;i++){
             for(int j =0;j<len-i-1;j++ ){
@@ -101,7 +104,7 @@ public class Recursion {
                 }
             }
         }
-        return array;
+        //return array;
     }
     /**
      * 冒泡排序
@@ -115,16 +118,84 @@ public class Recursion {
      */
 
 
-    public static int[] recureSort(int[] array,int L, int R){
-
-        if (L == R){
-            return array;
-
-        }else{
+    public static void recurSort(int[] array,int L, int R){
+        int temp;
+        if (L == R);
 
 
+        else {
+            for (int i = L; i < R; i++) {
+                if (array[i] > array[i + 1]) {
+                    temp = array[i];
+                    array[i] = array[i + 1];
+                    array[i + 1] = temp;
+                }
+            }
+
+            recurSort(array, L, R - 1);
         }
 
+
+
+    }
+
+
+    /**
+     * 斐波那契数列（Fibonacci sequence），又称黄金分割数列.
+     * 因数学家列昂纳多·斐波那契（Leonardoda Fibonacci）以兔子繁殖为例子而引入，故又称为“兔子数列”.
+     * 指的是这样一个数列：1、1、2、3、5、8、13、21、34、……
+     * 在数学上，斐波纳契数列以如下被以递推的方法定义：F(1)=1，F(2)=1, F(n)=F(n-1)+F(n-2)（n>=3，n∈N*）
+     *
+     */
+
+    public static long fibonacci(int n){
+
+        if (n == 1){
+            return 1;
+        }else if(n == 2){
+            return 1;
+        }else{
+            return (fibonacci(n-1)+fibonacci(n-2));
+        }
+
+
+    }
+
+    public static long[] fibonacciArray(int n){
+        long[] array = new long[n];
+        for (int i=1;i<n+1;i++){
+            array[i-1] = fibonacci(i);
+        }
+        return array;
+    }
+
+    /**
+     * 汉诺塔 Tower of Hanoi
+     * 印度的古老传说：在世界中心贝拿勒斯（在印度北部）的圣庙里，一块黄铜板上插着三根宝石针。
+     * 印度教的主神梵天在创造世界的时候，在其中一根针上从下到上地穿好了由大到小的64片金片，这就是所谓的汉诺塔。
+     * 不论白天黑夜，总有一个僧侣在按照下面的法则移动这些金片：一次只移动一片，不管在哪根针上，小片必须在大片上面。
+     * 僧侣们预言，当所有的金片都从梵天穿好的那根针上移到另外一根针上时，世界就将在一声霹雳中消灭，而梵塔、庙宇和众生也都将同归于尽。
+     * 假设有n片，移动次数是f(n).显然f(1)=1,f(2)=3,f(3)=7，且f(k+1)=2*f(k)+1。此后不难证明f(n)=2^n-1。
+     * n=64时，假如每秒钟一次，共需多长时间呢？一个平年365天有31536000 秒，闰年366天有31622400秒，平均每年31556952秒，计算一下：
+     * 18446744073709551615秒
+     * 这表明移完这些金片需要5845.54亿年以上
+     * @param n n个盘子
+     * @param start 起始柱子
+     * @param transfer 中转柱子
+     * @param target 目标柱子
+     *
+     */
+    public static void hanoi(int n,char start,char transfer,char target){
+        //只有一个盘子，直接搬到目标柱子
+        if (n == 1){
+            System.out.println(start+"---#--->"+target);
+        }else{
+            //起始柱子借助目标柱子将盘子都移动到中转柱子中(除了最大的盘子)
+            hanoi(n-1,start,target,transfer);
+            System.out.println(start+"---*--->"+target);
+            //中转柱子借助起始柱子将盘子都移动到目标柱子中
+            hanoi(n-1,transfer,start,target);
+        }
 
     }
     public static void main(String[] args) {
@@ -137,12 +208,29 @@ public class Recursion {
         System.out.println("非递归求数组最大值： " + max(sample));
         System.out.println("递归求数组最大值: " + recurMax(sample,0,sample.length-1));
 
+        /**
+         *打印数组Array.ToString()
+         * https://www.jianshu.com/p/510dc769ae09
+         */
+
         System.out.println("****************************");
-        int[] arr = {2,1,9,8,7,4,5,3,6};
-        int[] result = sort(arr);
-        for(int i=0;i<result.length;i++) {
-            System.out.println(result[i]);
-        }
+        int[] sortArray = {2,1,9,80,7,4,5,31,66};
+        System.out.println("冒泡排序：排序之前："+Arrays.toString(sortArray));
+        int[] arr = sortArray;
+        sort(arr);
+        System.out.println("冒泡排序循环方式："+Arrays.toString(arr));
+        System.out.println("****************************");
+        int[] newArr = sortArray;
+        recurSort(newArr,0,newArr.length-1);
+        System.out.println("冒泡排序递归方式： "+Arrays.toString(newArr));
+        System.out.println("****************************");
+
+        System.out.println("斐波那契数列的第n个值"+fibonacci(8));
+        System.out.println("斐波那契数列"+Arrays.toString(fibonacciArray(8)));
+        System.out.println("****************************");
+        System.out.println("汉诺塔");
+        hanoi(4,'A','B','C');
+
 
     }
 
