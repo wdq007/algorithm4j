@@ -1,6 +1,15 @@
-package com.dawang.algrithm;
+//:algorithm/Recursion.java
+package com.dawang.algorithm;
 
 import java.util.Arrays;
+
+/**
+ * @author Wang Daquan
+ * @author wangdaquan@yeah.net
+ *
+ *
+ *
+ */
 
 public class Recursion {
 /**
@@ -12,6 +21,8 @@ public class Recursion {
  * 递归出口(终止递归的条件)
  * 递归表达式(规律)
  * 技巧：在递归中常常是将问题切割成两个部分(1和整体的思想)，这能够让我们快速找到递归表达式(规律)
+ * @param n 任意整数
+ * @return 返回整数
  */
 
 
@@ -33,7 +44,7 @@ public class Recursion {
      * 以我们的高中数学知识我们又可以将上面的式子看成X=sum(n-1)+n
      *
      * @param n 要加到的数字，比如题目的100
-     * @return
+     * @return 整数
      */
     public static int recurSum(int n){
         if(n == 1){
@@ -57,13 +68,13 @@ public class Recursion {
 
     /**
      * int[] arrays = {2, 3, 4, 5, 1, 5, 2, 9, 5, 6, 8, 3, 2};
-     * 递归表达式(规律):
+     * {@code 递归表达式(规律):
      * 将数组第一个数->2与数组后面的数->{3, 4, 5, 1, 5, 2, 9, 5, 6, 8, 3, 2}进行切割
      * 将数组后面的数看成是一个整体X={3, 4, 5, 1, 5, 2, 9, 5, 6, 8, 3, 2}
      * 就可以看成是第一个数和一个整体进行比较if(2>X) return 2 else(2<X) return X
      * 找出这个整体的最大值与2进行比较。找出整体的最大值又是和我们的初始目的(找出最大值)是一样的
      * 也就可以写成if( 2>findMax() )return 2 else return findMax()
-     *
+     * }
      * 递归出口: 如果数组只有1个元素时，那么这个数组最大值就是它了。
      *
      * 通常为数组设定左边界和右边界，这样比较好地进行切割
@@ -74,7 +85,7 @@ public class Recursion {
      * @param sample 数组
      * @param L      左边界，第一个数
      * @param R      右边界，数组的长度
-     * @return
+     * @return 整数
      */
 
     public static int recurMax(int[] sample,int L, int R){
@@ -114,7 +125,6 @@ public class Recursion {
      * @param array 数组
      * @param L      左边界，第一个数
      * @param R      右边界，数组的长度
-     * @return
      */
 
 
@@ -144,8 +154,10 @@ public class Recursion {
      * 斐波那契数列（Fibonacci sequence），又称黄金分割数列.
      * 因数学家列昂纳多·斐波那契（Leonardoda Fibonacci）以兔子繁殖为例子而引入，故又称为“兔子数列”.
      * 指的是这样一个数列：1、1、2、3、5、8、13、21、34、……
-     * 在数学上，斐波纳契数列以如下被以递推的方法定义：F(1)=1，F(2)=1, F(n)=F(n-1)+F(n-2)（n>=3，n∈N*）
+     * {@code 在数学上，斐波纳契数列以如下被以递推的方法定义：F(1)=1，F(2)=1, F(n)=F(n-1)+F(n-2)（n>=3，n∈N*）}
      *
+     * @param  n 整数
+     * @return 长整数
      */
 
     public static long fibonacci(int n){
@@ -236,6 +248,11 @@ public class Recursion {
 
 
 }
+/* Output: (55% match)
+
+*/
+///:~
+
 
 
 
